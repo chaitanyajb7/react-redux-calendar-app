@@ -158,7 +158,7 @@ main {
 
 .calendar .body .cell {
   position: relative;
-  height: 5em;
+  height: 9em;
   border-right: 1px solid var(--border-color);
   overflow: hidden;
   cursor: pointer;
@@ -196,6 +196,7 @@ main {
   top: 0.75em;
   right: 0.75em;
   font-weight: 700;
+  z-index: 12;
 }
 
 .calendar .body .disabled {

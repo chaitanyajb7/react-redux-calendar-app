@@ -7,7 +7,7 @@ import { Container } from 'semantic-ui-react';
 import HeaderView from './HeaderView';
 import MonthView from './MonthView';
 import CellsView from './CellsView';
-import ReminderForm from './ReminderForm';
+import ReminderContainer from '../reminder/ReminderContainer';
 import { setCurrentMonth, setCurrentDate } from '../../actions/calenderActions';
 
 /*
@@ -30,47 +30,18 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   currentMonth: state.calenderReducer.currentMonth,
   selectedDate: state.calenderReducer.selectedDate,
-  calenderMap: state.calenderReducer.calenderMap
+  eventMap: state.calenderReducer.eventMap
 });
 
 class CalendarContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: '',
-      start: '',
-      end: '',
-      color: ''
-    };
     this.nextMonth = this.nextMonth.bind(this);
     this.prevMonth = this.prevMonth.bind(this);
-    this.submitReminder = this.submitReminder.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   onDateClick = day => {};
 
-  submitReminder = () => {};
-
-  handleClearForm(e) {
-    e.preventDefault();
-    this.setState({
-      name: '',
-      start: '',
-      end: '',
-      color: ''
-    });
-  }
-
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value
-    });
-  }
 
   nextMonth = e => {
     this.props.actions.setCurrentMonth(
@@ -91,10 +62,7 @@ class CalendarContainer extends React.Component {
   render() {
     return (
       <Container>
-        <ReminderForm
-          submitReminder={this.submitReminder}
-          value={this.state}
-          handleInputChange={this.handleInputChange}
+        <ReminderContainer
         />
         <div className="calendar">
           <HeaderView
@@ -106,7 +74,7 @@ class CalendarContainer extends React.Component {
           <CellsView
             currentMonth={this.props.currentMonth}
             selectedDate={this.props.selectedDate}
-            calenderMap={this.calenderMap}
+            eventMap={this.props.eventMap}
           />
         </div>
       </Container>

@@ -1,2 +1,3 @@
 export const SET_CURRENT_MONTH = 'SET_CURRENT_MONTH';
 export const SET_CURRENT_DATE = 'SET_CURRENT_DATE';
+export const SET_EVENT = 'SET_EVENT'
