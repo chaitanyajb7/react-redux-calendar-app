@@ -1,5 +1,5 @@
 `npm install`
-Run the above for first time setup:
+Run the above for first time setup.
 
 `npm start`
 Runs the app in the development mode.<br>
